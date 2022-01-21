@@ -13,6 +13,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Panther Logtool Version for Schema_tests
+env:
+  VERSION: v1.17.0-RC
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # Changed from "build" to "lint" like panther file.
@@ -39,8 +43,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      #- download_pantherlog_tool:
-      # version: v1.17.0-RC
+      - name: download_pantherlog_tool
+        run: curl -sSO "https://panther-community-us-east-1.s3.amazonaws.com/${{env.VERSION}}/tools/dev/pantherlog-linux-amd64" && mv pantherlog-linux-amd64 pantherlog && chmod +x pantherlog
       - name: Run schema tests
         run: ./pantherlog -v && ./pantherlog test ./schemas || true
 
