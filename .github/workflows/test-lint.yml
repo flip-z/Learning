@@ -1,50 +1,18 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Panther Detection Linting
 
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [pull_request, push]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Panther Logtool Version for Schema_tests
+# Panther Logtool Version for Download
 env:
   VERSION: v1.17.0-RC
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # Changed from "build" to "lint" like panther file.
-  lint:
-    # The type of runner that the job will run on
+  panther_test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup the Virtual Environment and install dependencies
-        run: make venv
-      - name: Run linting
-        run: make lint
-    
-  unit_tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup the Virtual Environment and install dependencies
-        run: make venv
-      - name: Run unit tests
-        run: make test
-
-  schema_tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: download_pantherlog_tool
+      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f #pin to latest release: v2.3.4
+      - name: Download Panther_Analysis_Tool
         run: curl -sSO "https://panther-community-us-east-1.s3.amazonaws.com/${{env.VERSION}}/tools/dev/pantherlog-linux-amd64" && mv pantherlog-linux-amd64 pantherlog && chmod +x pantherlog
-      - name: Run schema tests
+      - name: Run Panther Schema Tests
         run: ./pantherlog -v && ./pantherlog test ./schemas || true
 
