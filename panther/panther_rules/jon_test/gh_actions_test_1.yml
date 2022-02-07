@@ -2,7 +2,7 @@ AnalysisType: rule
 DedupPeriodMinutes: 60 # 1 hour
 DisplayName: Just TESTING HERE
 Enabled: true
-Filename: panther_test1.py
+Filename: gh_actions_test_1.py
 RuleID: Type.Behavior.MoreContext
 Severity: High
 LogTypes:
