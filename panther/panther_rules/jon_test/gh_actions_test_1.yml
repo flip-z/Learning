@@ -1,0 +1,28 @@
+AnalysisType: rule
+DedupPeriodMinutes: 60 # 1 hour
+DisplayName: Just TESTING HERE
+Enabled: true
+Filename: panther_test1.py
+RuleID: Type.Behavior.MoreContext
+Severity: High
+LogTypes:
+  - Okta.SystemLog
+Tags:
+  - Test
+  - Massari
+Description: >
+  This is Jon just testing to see if I can make a rule
+Runbook: >
+  Panic
+Reference: https://flipz.rocks
+Tests:
+  -
+      Name: Rule Test 1
+      LogType: Okta.SystemLog
+      ExpectedResult: False
+      Log:
+        {
+          "hostName": "test-01.prod.acme.io",
+          "user": "martin_smith",
+          "eventTime": "June 22 5:50:52 PM"
+        }
