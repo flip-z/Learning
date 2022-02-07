@@ -14,5 +14,4 @@ jobs:
       - name: Download Panther_Analysis_Tool
         run: curl -sSO "https://panther-community-us-east-1.s3.amazonaws.com/${{env.VERSION}}/tools/dev/pantherlog-linux-amd64" && mv pantherlog-linux-amd64 pantherlog && chmod +x pantherlog
       - name: Run Panther Schema Tests
-        run: ./pantherlog -v && ./pantherlog test ./schemas || true
-
+        run: ./pantherlog -v && ./pantherlog test
