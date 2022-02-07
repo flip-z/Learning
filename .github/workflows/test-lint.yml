@@ -11,9 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f #pin to latest release: v2.3.4
-      - name: Download Panther_Analysis_Tool
+      - name: Install Panther_Analysis_Tool
         run: pip3 install panther_analysis_tool
       #- name: Schema Tests
       #  run: panther_analysis_tool update-custom-schemas --path ./panther/schemas
       - name: Detection Tests
-        run: panther_analysis_tool test --path ./panther/panther_rules/
+        run: |
+          pipenv run -- panther_analysis_tool test --path ./panther/panther_rules/
