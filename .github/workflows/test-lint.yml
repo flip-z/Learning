@@ -22,6 +22,6 @@ jobs:
           FOLDERS: Hoodwink Dawnbreaker Marci
         run: |
           for f in $FOLDERS; 
-          do echo f;
+          do echo $FOLDERS.f $FOLDERS;
           done
           
