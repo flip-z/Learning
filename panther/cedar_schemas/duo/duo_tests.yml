@@ -1,1 +1,55 @@
-
+name: Unregistered domain blocked in enforce mode
+logType: Custom.Smokescreen
+input: |
+  {
+    "allow": true,
+    "content_length": 0,
+    "decision_reason": "default rule policy used",
+    "dst_ip": "170.98.106.228",
+    "dst_port": 443,
+    "enforce_would_deny": true,
+    "id": "c0j10jrgl13p8pm67u1g",
+    "level": "info",
+    "msg": "CANONICAL-PROXY-DECISION",
+    "project": "other",
+    "proxy_type": "connect",
+    "requested_host": "testproxy.mynovant.org:443",
+    "role": "",
+    "source_addr": "172.18.1.200:49656",
+    "src_host": "172.18.1.200",
+    "src_host_common_name": "unknown",
+    "src_host_organization_unit": "unknown",
+    "src_port": "49656",
+    "start_time": "2021-02-12T05:21:19.079118629Z",
+    "time": "2021-02-12T05:21:19Z",
+    "trace_id": "31337"
+  }
+result: |
+  {
+    "allow": true,
+    "content_length": 0,
+    "decision_reason": "default rule policy used",
+    "dst_ip": "170.98.106.228",
+    "dst_port": 443,
+    "enforce_would_deny": true,
+    "id": "c0j10jrgl13p8pm67u1g",
+    "level": "info",
+    "msg": "CANONICAL-PROXY-DECISION",
+    "project": "other",
+    "proxy_type": "connect",
+    "requested_host": "testproxy.mynovant.org:443",
+    "role": "",
+    "source_addr": "172.18.1.200:49656",
+    "src_host": "172.18.1.200",
+    "src_host_common_name": "unknown",
+    "src_host_organization_unit": "unknown",
+    "src_port": 49656,
+    "start_time": "2021-02-12T05:21:19.079118629Z",
+    "time": "2021-02-12T05:21:19Z",
+    "trace_id": "31337",
+    "p_event_time": "2021-02-12T05:21:19.079118629Z",
+    "p_any_ip_addresses": ["170.98.106.228","172.18.1.200"],
+    "p_any_domain_names": ["testproxy.mynovant.org"],
+    "p_log_type": "Custom.Smokescreen",
+    "p_any_trace_ids": ["31337"]
+  }
