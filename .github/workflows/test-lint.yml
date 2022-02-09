@@ -20,6 +20,5 @@ jobs:
       - name: Schema Tests
         run: ./pantherlog -v && ./pantherlog test ./schemas || true
       - name: Detection Tests
-        run: |
-          pipenv run -- panther_analysis_tool test --path ./panther/panther_rules/
+        run: panther_analysis_tool test --path ./panther/panther_rules/
           
