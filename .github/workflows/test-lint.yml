@@ -2,10 +2,6 @@ name: Panther Detection Linting
 
 on: [pull_request, push]
 
-# Panther Logtool Version for Download
-env:
-  VERSION: v1.17.0-RC
-
 jobs:
   panther_test:
     runs-on: ubuntu-latest
@@ -18,7 +14,14 @@ jobs:
           VERSION: v1.17.0-RC
         run: curl -sSO "https://panther-community-us-east-1.s3.amazonaws.com/$VERSION/tools/dev/pantherlog-linux-amd64" && mv pantherlog-linux-amd64 pantherlog && chmod +x pantherlog
       - name: Schema Tests
-        run: ./pantherlog -v && ./pantherlog test ./schemas || true
+        run: ./pantherlog parse --path ./schemas/
       - name: Detection Tests
         run: panther_analysis_tool test --path ./panther/panther_rules/
+      - name: Test Loop
+        env:
+          FOLDERS: Hoodwink Dawnbreaker Marci
+        run: |
+          for f in $FOLDERS; 
+          do echo f;
+          done
           
