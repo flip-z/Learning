@@ -13,14 +13,12 @@ jobs:
         env:
           VERSION: v1.17.0-RC
         run: curl -sSO "https://panther-community-us-east-1.s3.amazonaws.com/$VERSION/tools/dev/pantherlog-linux-amd64" && mv pantherlog-linux-amd64 pantherlog && chmod +x pantherlog
-      - name: Schema Tests
-        run: ./pantherlog parse --path ./schemas/
       - name: Detection Tests
         run: panther_analysis_tool test --path ./panther/panther_rules/
       - name: Schema Tests
         run: |
           for schema_test in ./panther/cedar_schemas/*/; 
-            do echo {$schema_test}.yml;
+            do echo $schema_test.yml;
           done
         
           
