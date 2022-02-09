@@ -18,7 +18,7 @@ jobs:
       - name: Schema Tests
         run: |
           for schema_test in ./panther/cedar_schemas/*/; 
-            do echo $schema_test.yml;
+            do echo $schema_test | sed -e 's/[\/]/.yml/g';
           done
         
           
