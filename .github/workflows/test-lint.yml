@@ -17,7 +17,7 @@ jobs:
         run: panther_analysis_tool test --path ./panther/panther_rules/
       - name: Schema Tests
         run: |
-          for dir in ./cedar_schemas/*;
+          for dir in ./panther/cedar_schemas/*;
             do ./pantherlog test "$dir$(basename $dir).yml" "$dir$(basename $dir)_tests.yml";
           done
         
