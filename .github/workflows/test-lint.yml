@@ -19,7 +19,7 @@ jobs:
         run: |
           for dir in ./panther/cedar_schemas/*;
             do ./pantherlog test "$dir/$(basename $dir).yml" "$dir/$(basename $dir)_tests.yml" \
-            || echo "No test files in $dir \n Looking for:\n$dir/$(basename $dir).yml \n $dir/$(basename $dir)_tests.yml";
+            || echo No test files in $dir \n Looking for:\n$dir/$(basename $dir).yml \n $dir/$(basename $dir)_tests.yml;
           done
         
           
