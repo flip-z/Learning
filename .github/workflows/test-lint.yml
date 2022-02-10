@@ -17,8 +17,8 @@ jobs:
         run: panther_analysis_tool test --path ./panther/panther_rules/
       - name: Schema Tests
         run: |
-          for schema_test in ./panther/cedar_schemas/*/; 
-            do echo $schema_test | sed -e 's/[\/]/.yml/g';
+          for dir in ./cedar_schemas;
+            do ./pantherlog test "${dir}/${dir}.yml" "${dir}/${dir}_tests.yml;
           done
         
           
