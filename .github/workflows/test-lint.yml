@@ -18,7 +18,7 @@ jobs:
       - name: Schema Tests
         run: |
           for dir in ./cedar_schemas;
-            do ./pantherlog test "${dir}/${dir}.yml" "${dir}/${dir}_tests.yml;
+            do ./pantherlog test "${dir}/${dir}.yml" "${dir}/${dir}_tests.yml";
           done
         
           
