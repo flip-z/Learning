@@ -1,6 +1,9 @@
 name: Panther Detection Linting
 
-on: [pull_request, push]
+on:
+  pull_request:
+    paths:
+      './panther/**/'
 
 jobs:
   panther_rule_test:
