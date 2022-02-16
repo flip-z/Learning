@@ -1,7 +1,7 @@
 name: Panther Detection Linting
 
 on:
-  pull_request:
+  push:
     paths:
       - 'panther/**/'
 
