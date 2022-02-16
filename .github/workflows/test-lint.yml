@@ -3,7 +3,7 @@ name: Panther Detection Linting
 on:
   push:
     paths:
-      - 'panther/**/'
+      - './panther/**/'
 
 jobs:
   panther_rule_test:
