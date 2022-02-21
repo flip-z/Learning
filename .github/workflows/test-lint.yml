@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - './panther/**/'
+  workflow_dispatch:
 
 jobs:
   panther_rule_test:
