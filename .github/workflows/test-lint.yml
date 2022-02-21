@@ -15,7 +15,10 @@ jobs:
         with:
           python-version: '3.7'
       - name: Setup
-        run: pip install pipenv && pipenv install --dev
+        run: |
+          pip install pipenv && 
+          export PIPENV_PIPFILE = 'panther/Pipfile' &&
+          pipenv install --dev
       - name: Install Panther_Analysis_Tool
         run: pip3 install panther_analysis_tool
       - name: Panther Analysis Tool Test
