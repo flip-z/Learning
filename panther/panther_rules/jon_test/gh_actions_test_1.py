@@ -1,4 +1,5 @@
 import datetime
+from policyuniverse.policy import Policy
 
 
 def rule(event):
