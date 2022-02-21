@@ -12,8 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f #pin to latest release: v2.3.4
       - uses: actions/setup-python@v2
-          with:
-            python-version: '3.7'
+        with:
+          python-version: '3.7'
       - name: Setup
         run: pip install pipenv && pipenv install --dev
       - name: Install Panther_Analysis_Tool
