@@ -39,7 +39,6 @@ input: |
 				"processIdentifier":0,
 				"subsystem":"",
 				"path":"/private/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/PKInstallSandboxTrash/69FE5FD5-881F-4755-B36A-CA754897619E.sandboxTrash/Slack.app/Contents/MacOS/Slack",
-				"composedMessage":"Security policy would not allow process: 83586, /private/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/PKInstallSandboxTrash/69FE5FD5-881F-4755-B36A-CA754897619E.sandboxTrash/Slack.app/Contents/MacOS/Slack",
 				"process":"kernel",
 				"sender":"AppleSystemPolicy",
 				"processImagePath":"/kernel",
