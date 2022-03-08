@@ -20,7 +20,9 @@ jobs:
       - name: Schema Tests REBORN
         run: |
           find ./panther/cedar_schemas/ -maxdepth 1 -mindepth 1 -type d | while read dir; do
-            echo "$dir"
+            if ! ./pantherlog test "$dir/$(basename $dir).yml" "$dir/$(basename $dir)_tests.yml"; then
+              printf "No test files in $dir\nLooking for:\n\t$dir/$(basename $dir).yml\n\t$dir/$(basename $dir)_tests.yml"
+            fi
           done
       - name: Schema Tests  # Relies on Naming Scheme (Directory Name).yml and (Directory Name)_tests.yml
         run: |
