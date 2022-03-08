@@ -20,11 +20,14 @@ jobs:
       - name: Schema Tests  # Relies on Naming Scheme (Directory Name).yml and (Directory Name)_tests.yml
         run: |
           for dir in ./panther/cedar_schemas/*; do
-            echo $dir
+            echo ">> AFTER FOR >> "$dir
             if [ -d "$dir" ]; then
+              echo ">> AFTER IF >> " $dir
               if ! ./pantherlog test "$dir/$(basename $dir).yml" "$dir/$(basename $dir)_tests.yml"; then
                 printf "No test files in $dir\nLooking for:\n\t$dir/$(basename $dir).yml\n\t$dir/$(basename $dir)_tests.yml"
                 exit 2
+              else
+                echo ">> FAIL >>" $dir
               fi
             fi
           done
