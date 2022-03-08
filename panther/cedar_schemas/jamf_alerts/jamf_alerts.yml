@@ -1,0 +1,78 @@
+version: 0
+schema: Custom.JamfAlertsV0
+fields:
+  - name: input
+    type: object
+    fields: 
+      - name: match
+        type: object
+        fields: 
+          - name: facts
+            type: array
+            element: 
+              type: json
+            description: "Unknown (facts added to schema?)"
+          - name: tags  
+            type: array
+            element: 
+              type: string
+            description: Tags applied to this filter match
+          - name: uuid
+            type: string
+          - name: event
+            type: json
+            description: The primary event reported by the host
+          - name: actions
+            type: array
+            element: 
+              type: json
+            description: Unknown (will always be unifiedLog?)
+          - name: context
+            type: array
+            element: 
+              type: json
+            description: Unknown
+      - name: reportType
+        type: string
+      - name: eventType
+        type: string
+      - name: host
+        type: object
+        fields:
+          - name: ips
+            type: array
+            element:
+              type: string
+              indicators: [ ip ]
+            description: Local IP address of the machine
+          - name: hostname
+            type: string
+            description: Hostname of the machine
+          - name: serial
+            type: string
+            description: Serial of the machine
+      - name: related
+        type: object
+        fields:
+          - name: users
+            type: json
+          - name: files
+            type: json
+          - name: binaries
+            type: json
+          - name: groups
+            type: json
+          - name: processes
+            type: json
+        element:
+          type: json
+  - name: version
+    type: smallint
+  - name: context
+    type: json
+    description: Logging context (will be constant for our tenant)
+  - name: timestamp
+    type: timestamp
+    timeFormat: unix_ms
+    description: Timestamp as reported by JAMF at match time
+    isEventTime: true # Less preferred than self-reported
