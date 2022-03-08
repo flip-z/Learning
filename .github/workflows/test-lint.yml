@@ -21,9 +21,11 @@ jobs:
         run: curl -sSO "https://panther-community-us-east-1.s3.amazonaws.com/$VERSION/tools/dev/pantherlog-linux-amd64" && mv pantherlog-linux-amd64 pantherlog && chmod +x pantherlog
       - name: Schema Tests  # Relies on Naming Scheme (Directory Name).yml and (Directory Name)_tests.yml
         run: |
-          for dir in ./panther/cedar_schemas/*/;
-            do if ! ./pantherlog test "$dir/$(basename $dir).yml" "$dir$(basename $dir)_tests.yml"; then
-              printf "No test files in $dir\nLooking for:\n\t$dir/$(basename $dir).yml\n\t$dir$(basename $dir)_tests.yml"
-              exit 2
+          for dir in ./panther/cedar_schemas/*;
+            if [ -d "$dir" ]; then
+              do if ! ./pantherlog test "$dir/$(basename $dir).yml" "$dir$(basename $dir)_tests.yml"; then
+                printf "No test files in $dir\nLooking for:\n\t$dir/$(basename $dir).yml\n\t$dir$(basename $dir)_tests.yml"
+                exit 2
+              fi
             fi
           done
