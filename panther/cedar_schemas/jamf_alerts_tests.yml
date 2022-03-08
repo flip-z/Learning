@@ -1,0 +1,182 @@
+name: Jamf Alerts Test
+logtype: Custom.JamfAlertsV0
+input: |
+{
+	"input":{
+		"match":{
+			"facts":[
+				{
+					"actions":[
+						{
+							"name":"Alert",
+							"parameters":{
+								
+							}
+						}
+					],
+					"human":"Gatekeeper prevented an unsigned, invalid, or unknown application from running.",
+					"context":[
+						
+					],
+					"uuid":"40314161-FE88-11E9-893A-ACDE48001122",
+					"version":null,
+					"tags":[
+						"Gatekeeper"
+					],
+					"name":"GatekeeperBlockedUnsignedOrUnknown"
+				}
+			],
+			"tags":[
+				"Gatekeeper"
+			],
+			"uuid":"BF0EEAF5-E8FB-4C27-BEDA-3123152BC8F9",
+			"event":{
+				"uuid":"44F15938-288C-4A58-B9E8-F9607B022229",
+				"category":"",
+				"pid":83586,
+				"name":"Slack",
+				"timestamp":1604441411.533808,
+				"processIdentifier":0,
+				"subsystem":"",
+				"path":"/private/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/PKInstallSandboxTrash/69FE5FD5-881F-4755-B36A-CA754897619E.sandboxTrash/Slack.app/Contents/MacOS/Slack",
+				"composedMessage":"Security policy would not allow process: 83586, /private/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/PKInstallSandboxTrash/69FE5FD5-881F-4755-B36A-CA754897619E.sandboxTrash/Slack.app/Contents/MacOS/Slack",
+				"process":"kernel",
+				"sender":"AppleSystemPolicy",
+				"processImagePath":"/kernel",
+				"senderImagePath":"/System/Library/Extensions/AppleSystemPolicy.kext/Contents/MacOS/AppleSystemPolicy"
+			},
+			"actions":[
+				{
+					"name":"Alert",
+					"parameters":{
+						
+					}
+				}
+			],
+			"context":[
+				
+			]
+		},
+		"reportType":"alert",
+		"eventType":"GPGatekeeperEvent",
+		"host":{
+			"ips":[
+				"192.168.0.9"
+			],
+			"hostname":"C02YR3GNLVCF",
+			"serial":"C02YR3GNLVCF"
+		},
+		"related":{
+			"users":[
+				
+			],
+			"files":[
+				
+			],
+			"binaries":[
+				
+			],
+			"groups":[
+				
+			],
+			"processes":[
+				
+			]
+		}
+	},
+	"version":1,
+	"context":{
+		"identity":{
+			"claims":{
+				"clientid":"ED1A35BB-1022-514F-B364-5C9D5790C5F0",
+				"hd":"cedar.protect",
+				"certid":"d630a4a09616b0804eeaf96b39a10c50fa535b65e1e04ffad571ff3c4ae8777d"
+			}
+		}
+	},
+	"timestamp":1604441411560
+}
+result: |
+{
+	"input": {
+		"match": {
+			"facts": [
+				{
+					"actions": [
+						{
+							"name": "Alert",
+							"parameters": {}
+						}
+					],
+					"human": "Gatekeeper prevented an unsigned, invalid, or unknown application from running.",
+					"context": [],
+					"uuid": "40314161-FE88-11E9-893A-ACDE48001122",
+					"version": null,
+					"tags": [
+						"Gatekeeper"
+					],
+					"name": "GatekeeperBlockedUnsignedOrUnknown"
+				}
+			],
+			"tags": [
+				"Gatekeeper"
+			],
+			"uuid": "BF0EEAF5-E8FB-4C27-BEDA-3123152BC8F9",
+			"event": {
+				"uuid": "44F15938-288C-4A58-B9E8-F9607B022229",
+				"category": "",
+				"pid": 83586,
+				"name": "Slack",
+				"timestamp": 1604441411.533808,
+				"processIdentifier": 0,
+				"subsystem": "",
+				"path": "/private/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/PKInstallSandboxTrash/69FE5FD5-881F-4755-B36A-CA754897619E.sandboxTrash/Slack.app/Contents/MacOS/Slack",
+				"composedMessage": "Security policy would not allow process: 83586, /private/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/PKInstallSandboxTrash/69FE5FD5-881F-4755-B36A-CA754897619E.sandboxTrash/Slack.app/Contents/MacOS/Slack",
+				"process": "kernel",
+				"sender": "AppleSystemPolicy",
+				"processImagePath": "/kernel",
+				"senderImagePath": "/System/Library/Extensions/AppleSystemPolicy.kext/Contents/MacOS/AppleSystemPolicy"
+			},
+			"actions": [
+				{
+					"name": "Alert",
+					"parameters": {}
+				}
+			]
+		},
+		"reportType": "alert",
+		"eventType": "GPGatekeeperEvent",
+		"host": {
+			"ips": [
+				"192.168.0.9"
+			],
+			"hostname": "C02YR3GNLVCF",
+			"serial": "C02YR3GNLVCF"
+		},
+		"related": {
+			"users": [],
+			"files": [],
+			"binaries": [],
+			"groups": [],
+			"processes": []
+		}
+	},
+	"version": 1,
+	"context": {
+		"identity": {
+			"claims": {
+				"clientid": "ED1A35BB-1022-514F-B364-5C9D5790C5F0",
+				"hd": "cedar.protect",
+				"certid": "d630a4a09616b0804eeaf96b39a10c50fa535b65e1e04ffad571ff3c4ae8777d"
+			}
+		}
+	},
+	"timestamp": 1604441411560,
+	"p_log_type": "Custom.Test",
+	"p_row_id": "7eb347c0607785d0d9d8d4cb0fcc06",
+	"p_event_time": "2020-11-03T22:10:11.56Z",
+	"p_parse_time": "2022-03-04T15:55:02.990447264Z",
+	"p_any_ip_addresses": [
+		"192.168.0.9"
+	]
+}
