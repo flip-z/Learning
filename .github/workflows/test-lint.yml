@@ -21,6 +21,6 @@ jobs:
         run: |
           find ./panther/cedar_schemas/ -maxdepth 1 -mindepth 1 -type d | while read dir; do
             if ! ./pantherlog test $dir; then
-              exit 2
+              exit 1
             fi
           done
