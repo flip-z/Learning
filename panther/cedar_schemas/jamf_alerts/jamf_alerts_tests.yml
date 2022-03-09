@@ -1,6 +1,6 @@
 ---
 name: Something happened!
-logType: Custom.JamfAlertsV0
+logType: JamfAlertsV1
 input: |
   {
     "input":{
