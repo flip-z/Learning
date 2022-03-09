@@ -17,25 +17,10 @@ jobs:
         env:
           VERSION: v1.17.0-RC
         run: curl -sSO "https://panther-community-us-east-1.s3.amazonaws.com/$VERSION/tools/dev/pantherlog-linux-amd64" && mv pantherlog-linux-amd64 pantherlog && chmod +x pantherlog
-      - name: Schema Tests REBORN
+      - name: Schema Tests
         run: |
           find ./panther/cedar_schemas/ -maxdepth 1 -mindepth 1 -type d | while read dir; do
-            echo ./pantherlog test $dir 
             if ! ./pantherlog test $dir; then
-              printf ">> Test Failure"
-            fi
-          done
-      - name: Schema Tests  # Relies on Naming Scheme (Directory Name).yml and (Directory Name)_tests.yml
-        run: |
-          for dir in ./panther/cedar_schemas/*; do
-            echo ">> AFTER FOR >> "$dir
-            if [ -d "$dir" ]; then
-              echo ">> AFTER IF >> " $dir
-              if ! ./pantherlog test "$dir/$(basename $dir).yml" "$dir/$(basename $dir)_tests.yml"; then
-                printf "No test files in $dir\nLooking for:\n\t$dir/$(basename $dir).yml\n\t$dir/$(basename $dir)_tests.yml"
-                exit 2
-              else
-                echo ">> FAIL >>" $dir
-              fi
+              exit 2
             fi
           done
