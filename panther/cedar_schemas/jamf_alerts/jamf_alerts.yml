@@ -1,0 +1,330 @@
+version: 0
+fields:
+    - name: context
+      required: true
+      type: object
+      fields:
+        - name: identity
+          required: true
+          type: object
+          fields:
+            - name: claims
+              required: true
+              type: object
+              fields:
+                - name: certid
+                  required: true
+                  type: string
+                - name: clientid
+                  required: true
+                  type: string
+                - name: hd
+                  required: true
+                  type: string
+    - name: input
+      required: true
+      type: object
+      fields:
+        - name: eventType
+          required: true
+          type: string
+        - name: host
+          required: true
+          type: object
+          fields:
+            - name: hostname
+              required: true
+              type: string
+            - name: ips
+              required: true
+              type: array
+              element:
+                type: string
+                indicators:
+                    - ip
+            - name: serial
+              required: true
+              type: string
+        - name: match
+          required: true
+          type: object
+          fields:
+            - name: actions
+              required: true
+              type: array
+              element:
+                type: object
+                fields:
+                    - name: name
+                      required: true
+                      type: string
+            - name: event
+              required: true
+              type: object
+              fields:
+                - name: category
+                  required: true
+                  type: string
+                - name: composedMessage
+                  required: true
+                  type: string
+                - name: name
+                  required: true
+                  type: string
+                - name: path
+                  required: true
+                  type: string
+                - name: pid
+                  required: true
+                  type: bigint
+                - name: process
+                  required: true
+                  type: string
+                - name: processIdentifier
+                  required: true
+                  type: bigint
+                - name: processImagePath
+                  required: true
+                  type: string
+                - name: sender
+                  required: true
+                  type: string
+                - name: senderImagePath
+                  required: true
+                  type: string
+                - name: subsystem
+                  required: true
+                  type: string
+                - name: timestamp
+                  required: true
+                  type: float
+                - name: uuid
+                  required: true
+                  type: string
+            - name: facts
+              required: true
+              type: array
+              element:
+                type: object
+                fields:
+                    - name: actions
+                      required: true
+                      type: array
+                      element:
+                        type: object
+                        fields:
+                            - name: name
+                              required: true
+                              type: string
+                    - name: human
+                      required: true
+                      type: string
+                    - name: name
+                      required: true
+                      type: string
+                    - name: tags
+                      required: true
+                      type: array
+                      element:
+                        type: string
+                    - name: uuid
+                      required: true
+                      type: string
+            - name: tags
+              required: true
+              type: array
+              element:
+                type: string
+            - name: uuid
+              required: true
+              type: string
+        - name: related
+          required: true
+          type: object
+          fields:
+            - name: binaries
+              required: true
+              type: array
+              element:
+                type: object
+                fields:
+                    - name: accessed
+                      required: true
+                      type: bigint
+                    - name: changed
+                      required: true
+                      type: bigint
+                    - name: created
+                      required: true
+                      type: bigint
+                    - name: fsid
+                      required: true
+                      type: bigint
+                    - name: gid
+                      required: true
+                      type: bigint
+                    - name: inode
+                      required: true
+                      type: bigint
+                    - name: isAppBundle
+                      required: true
+                      type: boolean
+                    - name: isDirectory
+                      required: true
+                      type: boolean
+                    - name: isDownload
+                      required: true
+                      type: boolean
+                    - name: isScreenShot
+                      required: true
+                      type: boolean
+                    - name: mode
+                      required: true
+                      type: bigint
+                    - name: modified
+                      required: true
+                      type: bigint
+                    - name: path
+                      required: true
+                      type: string
+                    - name: sha1hex
+                      required: true
+                      type: string
+                    - name: sha256hex
+                      required: true
+                      type: string
+                    - name: signingInfo
+                      required: true
+                      type: object
+                      fields:
+                        - name: appid
+                          required: true
+                          type: string
+                        - name: authorities
+                          required: true
+                          type: array
+                          element:
+                            type: string
+                        - name: signerType
+                          required: true
+                          type: bigint
+                        - name: status
+                          required: true
+                          type: bigint
+                        - name: statusMessage
+                          required: true
+                          type: string
+                        - name: teamid
+                          required: true
+                          type: string
+                    - name: size
+                      required: true
+                      type: bigint
+                    - name: uid
+                      required: true
+                      type: bigint
+            - name: groups
+              required: true
+              type: array
+              element:
+                type: object
+                fields:
+                    - name: gid
+                      required: true
+                      type: bigint
+                    - name: name
+                      required: true
+                      type: string
+                    - name: uuid
+                      required: true
+                      type: string
+            - name: processes
+              required: true
+              type: array
+              element:
+                type: object
+                fields:
+                    - name: pgid
+                      type: bigint
+                    - name: ppid
+                      type: bigint
+                    - name: args
+                      required: true
+                      type: array
+                      element:
+                        type: string
+                    - name: gid
+                      required: true
+                      type: bigint
+                    - name: name
+                      required: true
+                      type: string
+                    - name: path
+                      required: true
+                      type: string
+                    - name: pid
+                      required: true
+                      type: bigint
+                    - name: rgid
+                      required: true
+                      type: bigint
+                    - name: ruid
+                      required: true
+                      type: bigint
+                    - name: signingInfo
+                      required: true
+                      type: object
+                      fields:
+                        - name: appid
+                          required: true
+                          type: string
+                        - name: authorities
+                          required: true
+                          type: array
+                          element:
+                            type: string
+                        - name: signerType
+                          required: true
+                          type: bigint
+                        - name: status
+                          required: true
+                          type: bigint
+                        - name: statusMessage
+                          required: true
+                          type: string
+                        - name: teamid
+                          required: true
+                          type: string
+                    - name: startTimestamp
+                      required: true
+                      type: bigint
+                    - name: uid
+                      required: true
+                      type: bigint
+                    - name: uuid
+                      required: true
+                      type: string
+            - name: users
+              required: true
+              type: array
+              element:
+                type: object
+                fields:
+                    - name: name
+                      required: true
+                      type: string
+                    - name: uid
+                      required: true
+                      type: bigint
+                    - name: uuid
+                      required: true
+                      type: string
+        - name: reportType
+          required: true
+          type: string
+    - name: timestamp
+      required: true
+      type: bigint
+    - name: version
+      required: true
+      type: bigint
