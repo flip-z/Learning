@@ -20,7 +20,7 @@ jobs:
       - name: Schema Tests
         run: |
           find ./panther/cedar_schemas/ -maxdepth 1 -mindepth 1 -type d | while read dir; do
-            echo "Starting >> $dir \n"
+            echo "Starting >> $dir"
             if ! ./pantherlog test $dir; then
               exit 1
             fi
