@@ -1,0 +1,410 @@
+name: Jamf Logs Test
+logtype: Custom.JamfLogsV0
+input: |
+{
+	"input":{
+		"match":{
+			"facts":[
+				{
+					"actions":[
+						{
+							"name":"Log",
+							"parameters":{
+								
+							}
+						}
+					],
+					"human":"A screenshot was created.",
+					"context":[
+						
+					],
+					"uuid":"CB4D90C6-0CD2-41C5-8D77-67BD84457CA9",
+					"version":null,
+					"tags":[
+						"Visibility"
+					],
+					"name":"Screenshot"
+				}
+			],
+			"tags":[
+				"Visibility"
+			],
+			"uuid":"4DFF7383-C35B-435A-A2E4-12A50C05822E",
+			"event":{
+				"pid":27725,
+				"uid":502,
+				"gid":20,
+				"eventID":170296199005321,
+				"dev":16777220,
+				"prevFile":"/System/Volumes/Data/Users/avery/Desktop/.Screen Shot 2020-11-11 at 7.12.12 PM.png",
+				"uuid":"F02D8CC2-311F-490C-BC84-877BF986730E",
+				"path":"/Users/avery/Desktop/Screen Shot 2020-11-11 at 7.12.12 PM.png",
+				"timestamp":1605139937.975442,
+				"iNode":12766522,
+				"type":3
+			},
+			"actions":[
+				{
+					"name":"Log",
+					"parameters":{
+						
+					}
+				}
+			],
+			"context":[
+				
+			]
+		},
+		"reportType":"log",
+		"eventType":"GPFSEvent",
+		"host":{
+			"ips":[
+				"192.168.4.60"
+			],
+			"hostname":"Avery\u2019s MacBook Pro",
+			"serial":"C02YR3Z2LVCF"
+		},
+		"related":{
+			"users":[
+				{
+					"uid":502,
+					"name":"avery",
+					"uuid":"C02YR3Z2LVCF1f6"
+				}
+			],
+			"files":[
+				{
+					"modified":1605139937,
+					"downloadedFrom":null,
+					"changed":1605139937,
+					"signingInfo":{
+						"status":-67062,
+						"authorities":[
+							
+						],
+						"teamid":"",
+						"signerType":4,
+						"statusMessage":"code object is not signed at all",
+						"entitlements":[
+							
+						],
+						"appid":""
+					},
+					"xattrs":[
+						"com.apple.FinderInfo",
+						"com.apple.lastuseddate#PS",
+						"com.apple.macl",
+						"com.apple.metadata:kMDItemIsScreenCapture",
+						"com.apple.metadata:kMDItemScreenCaptureGlobalRect",
+						"com.apple.metadata:kMDItemScreenCaptureType"
+					],
+					"path":"/Users/avery/Desktop/Screen Shot 2020-11-11 at 7.12.12 PM.png",
+					"inode":12766522,
+					"sha1hex":"027e871dddc924e3ad3f98b149afdddddc346e6b",
+					"size":187432,
+					"isDirectory":false,
+					"sha256hex":"ee536a816b2859c3378edd3b5bccece1f1174559ba3afa5496daeeb941943f42",
+					"uid":502,
+					"isDownload":false,
+					"gid":20,
+					"fsid":16777220,
+					"isScreenShot":true,
+					"mode":33188,
+					"isAppBundle":false,
+					"created":1605139937,
+					"accessed":1605139937
+				}
+			],
+			"binaries":[
+				{
+					"modified":1600735587,
+					"downloadedFrom":null,
+					"changed":1604583825,
+					"signingInfo":{
+						"status":0,
+						"authorities":[
+							"Software Signing",
+							"Apple Code Signing Certification Authority",
+							"Apple Root CA"
+						],
+						"teamid":"",
+						"signerType":0,
+						"statusMessage":"No error.",
+						"entitlements":[
+							
+						],
+						"appid":"com.apple.screencaptureui"
+					},
+					"xattrs":[
+						
+					],
+					"path":"/System/Library/CoreServices/screencaptureui.app/Contents/MacOS/screencaptureui",
+					"inode":1152921500312418159,
+					"sha1hex":"f7966585f1f22be2c44d597d24be8a9e944cdd64",
+					"size":1052336,
+					"isDirectory":false,
+					"sha256hex":"f70956dd2be768c79c0cf4152809f684cb16974bc06204131b7fd3689964f41b",
+					"uid":0,
+					"isDownload":false,
+					"gid":0,
+					"fsid":16777220,
+					"isScreenShot":false,
+					"mode":33261,
+					"isAppBundle":false,
+					"created":1600735587,
+					"accessed":1600735587
+				}
+			],
+			"groups":[
+				{
+					"gid":20,
+					"name":"staff",
+					"uuid":"C02YR3Z2LVCF14"
+				}
+			],
+			"processes":[
+				{
+					"uuid":"C8DDAD6B-9C75-4CE8-9A64-84C37C0C7C53",
+					"ruid":502,
+					"uid":502,
+					"startTimestamp":1605139928,
+					"ppid":1,
+					"appPath":"/System/Library/CoreServices/screencaptureui.app",
+					"path":"/System/Library/CoreServices/screencaptureui.app/Contents/MacOS/screencaptureui",
+					"gid":20,
+					"rgid":20,
+					"args":[
+						"/System/Library/CoreServices/screencaptureui.app/Contents/MacOS/screencaptureui"
+					],
+					"signingInfo":{
+						"status":0,
+						"authorities":[
+							"Software Signing",
+							"Apple Code Signing Certification Authority",
+							"Apple Root CA"
+						],
+						"teamid":"",
+						"signerType":0,
+						"statusMessage":"No error.",
+						"entitlements":[
+							
+						],
+						"appid":"com.apple.screencaptureui"
+					},
+					"pid":27725,
+					"name":"screencaptureui",
+					"pgid":27725
+				}
+			]
+		}
+	},
+	"version":1,
+	"context":{
+		"identity":{
+			"claims":{
+				"clientid":"9A33B9C2-EAEC-5EDF-90F3-A6D12F560810",
+				"hd":"cedar.protect",
+				"certid":"4218a19d5b7c3ab3bb6df7ec1b892a1271ae3b5dff95801b43fd15d783ffa6cd"
+			}
+		}
+	},
+	"timestamp":1605139938013
+}
+result: |
+{
+	"input": {
+		"match": {
+			"facts": [
+				{
+					"actions": [
+						{
+							"name": "Log",
+							"parameters": {}
+						}
+					],
+					"human": "A screenshot was created.",
+					"context": [],
+					"uuid": "CB4D90C6-0CD2-41C5-8D77-67BD84457CA9",
+					"version": null,
+					"tags": [
+						"Visibility"
+					],
+					"name": "Screenshot"
+				}
+			],
+			"tags": [
+				"Visibility"
+			],
+			"uuid": "4DFF7383-C35B-435A-A2E4-12A50C05822E",
+			"event": {
+				"pid": 27725,
+				"uid": 502,
+				"gid": 20,
+				"eventID": 170296199005321,
+				"dev": 16777220,
+				"prevFile": "/System/Volumes/Data/Users/avery/Desktop/.Screen Shot 2020-11-11 at 7.12.12 PM.png",
+				"uuid": "F02D8CC2-311F-490C-BC84-877BF986730E",
+				"path": "/Users/avery/Desktop/Screen Shot 2020-11-11 at 7.12.12 PM.png",
+				"timestamp": 1605139937.975442,
+				"iNode": 12766522,
+				"type": 3
+			},
+			"actions": [
+				{
+					"name": "Log",
+					"parameters": {}
+				}
+			]
+		},
+		"reportType": "log",
+		"eventType": "GPFSEvent",
+		"host": {
+			"ips": [
+				"192.168.4.60"
+			],
+			"hostname": "Avery’s MacBook Pro",
+			"serial": "C02YR3Z2LVCF"
+		},
+		"related": {
+			"users": [
+				{
+					"uid": 502,
+					"name": "avery",
+					"uuid": "C02YR3Z2LVCF1f6"
+				}
+			],
+			"files": [
+				{
+					"modified": 1605139937,
+					"downloadedFrom": null,
+					"changed": 1605139937,
+					"signingInfo": {
+						"status": -67062,
+						"authorities": [],
+						"teamid": "",
+						"signerType": 4,
+						"statusMessage": "code object is not signed at all",
+						"entitlements": [],
+						"appid": ""
+					},
+					"xattrs": [
+						"com.apple.FinderInfo",
+						"com.apple.lastuseddate#PS",
+						"com.apple.macl",
+						"com.apple.metadata:kMDItemIsScreenCapture",
+						"com.apple.metadata:kMDItemScreenCaptureGlobalRect",
+						"com.apple.metadata:kMDItemScreenCaptureType"
+					],
+					"path": "/Users/avery/Desktop/Screen Shot 2020-11-11 at 7.12.12 PM.png",
+					"inode": 12766522,
+					"sha1hex": "027e871dddc924e3ad3f98b149afdddddc346e6b",
+					"size": 187432,
+					"isDirectory": false,
+					"sha256hex": "ee536a816b2859c3378edd3b5bccece1f1174559ba3afa5496daeeb941943f42",
+					"uid": 502,
+					"isDownload": false,
+					"gid": 20,
+					"fsid": 16777220,
+					"isScreenShot": true,
+					"mode": 33188,
+					"isAppBundle": false,
+					"created": 1605139937,
+					"accessed": 1605139937
+				}
+			],
+			"binaries": [
+				{
+					"modified": 1600735587,
+					"downloadedFrom": null,
+					"changed": 1604583825,
+					"signingInfo": {
+						"status": 0,
+						"authorities": [
+							"Software Signing",
+							"Apple Code Signing Certification Authority",
+							"Apple Root CA"
+						],
+						"teamid": "",
+						"signerType": 0,
+						"statusMessage": "No error.",
+						"entitlements": [],
+						"appid": "com.apple.screencaptureui"
+					},
+					"xattrs": [],
+					"path": "/System/Library/CoreServices/screencaptureui.app/Contents/MacOS/screencaptureui",
+					"inode": 1152921500312418200,
+					"sha1hex": "f7966585f1f22be2c44d597d24be8a9e944cdd64",
+					"size": 1052336,
+					"isDirectory": false,
+					"sha256hex": "f70956dd2be768c79c0cf4152809f684cb16974bc06204131b7fd3689964f41b",
+					"uid": 0,
+					"isDownload": false,
+					"gid": 0,
+					"fsid": 16777220,
+					"isScreenShot": false,
+					"mode": 33261,
+					"isAppBundle": false,
+					"created": 1600735587,
+					"accessed": 1600735587
+				}
+			],
+			"groups": [
+				{
+					"gid": 20,
+					"name": "staff",
+					"uuid": "C02YR3Z2LVCF14"
+				}
+			],
+			"processes": [
+				{
+					"uuid": "C8DDAD6B-9C75-4CE8-9A64-84C37C0C7C53",
+					"ruid": 502,
+					"uid": 502,
+					"startTimestamp": 1605139928,
+					"ppid": 1,
+					"appPath": "/System/Library/CoreServices/screencaptureui.app",
+					"path": "/System/Library/CoreServices/screencaptureui.app/Contents/MacOS/screencaptureui",
+					"gid": 20,
+					"rgid": 20,
+					"args": [
+						"/System/Library/CoreServices/screencaptureui.app/Contents/MacOS/screencaptureui"
+					],
+					"signingInfo": {
+						"status": 0,
+						"authorities": [
+							"Software Signing",
+							"Apple Code Signing Certification Authority",
+							"Apple Root CA"
+						],
+						"teamid": "",
+						"signerType": 0,
+						"statusMessage": "No error.",
+						"entitlements": [],
+						"appid": "com.apple.screencaptureui"
+					},
+					"pid": 27725,
+					"name": "screencaptureui",
+					"pgid": 27725
+				}
+			]
+		}
+	},
+	"version": 1,
+	"context": {
+		"identity": {
+			"claims": {
+				"clientid": "9A33B9C2-EAEC-5EDF-90F3-A6D12F560810",
+				"hd": "cedar.protect",
+				"certid": "4218a19d5b7c3ab3bb6df7ec1b892a1271ae3b5dff95801b43fd15d783ffa6cd"
+			}
+		}
+	},
+	"timestamp": 1605139938013,
+	"p_log_type": "Custom.Test",
+	"p_row_id": "7eb347c0607785d0d9d8d4cb0f01",
+	"p_event_time": "2020-11-12T00:12:18.013Z",
+	"p_parse_time": "2022-03-04T15:51:10.442887456Z",
+	"p_any_ip_addresses": [
+		"192.168.4.60"
+	]
+}
