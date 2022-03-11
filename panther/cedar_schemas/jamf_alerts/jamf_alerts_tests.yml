@@ -1,5 +1,5 @@
-name: Something happened!
-logType: JamfAlertsV1
+name: Jamf Alerts Test
+logType: JamfAlerts
 input: |
   {
     "input":{
@@ -10,13 +10,11 @@ input: |
               {
                 "name":"Alert",
                 "parameters":{
-
                 }
               }
             ],
             "human":"Gatekeeper prevented an unsigned, invalid, or unknown application from running.",
             "context":[
-
             ],
             "uuid":"40314161-FE88-11E9-893A-ACDE48001122",
             "version":null,
@@ -49,12 +47,10 @@ input: |
           {
             "name":"Alert",
             "parameters":{
-
             }
           }
         ],
         "context":[
-
         ]
       },
       "reportType":"alert",
@@ -68,19 +64,14 @@ input: |
       },
       "related":{
         "users":[
-
         ],
         "files":[
-
         ],
         "binaries":[
-
         ],
         "groups":[
-
         ],
         "processes":[
-
         ]
       }
     },
