@@ -1,5 +1,5 @@
 version: 0
-schema: JamfAlertsV1
+schema: JamfAlerts
 fields:
     - name: context
       required: true
