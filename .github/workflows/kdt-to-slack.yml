@@ -12,4 +12,4 @@ jobs:
       - name: Install KDT
         run: curl -sSL https://cli.kondukto.io | sudo sh
       - name: List Projects
-        run: kdt list projects --host cedar.kondukto.io:8088 --token cHBBOVBtQUN2em1qM1drRmZrWHZlQ09jTmNuMnJMZVhONDJpeVZZN2VNajY5MFZRSEpXSXFjNmZ0Z2hW
+        run: kdt list projects --host https://cedar.kondukto.io:8088 --token cHBBOVBtQUN2em1qM1drRmZrWHZlQ09jTmNuMnJMZVhONDJpeVZZN2VNajY5MFZRSEpXSXFjNmZ0Z2hW
