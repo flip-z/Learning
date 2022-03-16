@@ -1,6 +1,7 @@
 name: Kondukto Report to Slack
 
 on:
+push:
   workflow_dispatch:
 
 jobs:
@@ -11,4 +12,4 @@ jobs:
       - name: Install KDT
         run: curl -sSL https://cli.kondukto.io | sudo sh
       - name: List Projects
-        run: kdt list projects --host https://cedar.kondukto.io/ --token BDS1NlQzXWG4YYtDhNd48ragDcizggTmA1jvyCoMVDp9
+        run: kdt list projects --host https://cedar.kondukto.io/ --token cHBBOVBtQUN2em1qM1drRmZrWHZlQ09jTmNuMnJMZVhONDJpeVZZN2VNajY5MFZRSEpXSXFjNmZ0Z2hW
