@@ -1,7 +1,7 @@
 name: Kondukto Report to Slack
 
 on:
-push:
+  push:
   workflow_dispatch:
 
 jobs:
