@@ -1,4 +1,4 @@
-Name: Kondukto Report to Slack
+name: Kondukto Report to Slack
 
 on:
   workflow_dispatch:
