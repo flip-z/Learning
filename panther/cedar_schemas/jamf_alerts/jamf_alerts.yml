@@ -7,7 +7,7 @@ fields:
       fields:
         - name: identity
           required: true
-          type: object
+          type: objectti
           fields:
             - name: claims
               required: true
@@ -325,7 +325,9 @@ fields:
           type: string
     - name: timestamp
       required: true
-      type: bigint
+      type: timestamp
+      timeFormat: unix_ms
+      isEventTime: true
     - name: version
       required: true
       type: bigint
