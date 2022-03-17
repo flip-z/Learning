@@ -11,8 +11,10 @@ jobs:
       - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
       - name: Install KDT
         run: curl -sSL https://cli.kondukto.io | sh
+      - name: Install JQ
+        run: sudo apt-get install jq
       - name: List Project Scans
-        run: kdt list scans -v -p cedar --host https://cedar.kondukto.io --token ${{ secrets.KDT_TOKEN }} | sed 's/   */,/'g >> payload-slack-content.json && cat payload-slack-content.json
+        run: kdt list scans -v -p cedar --host https://cedar.kondukto.io --token ${{ secrets.KDT_TOKEN }} | jq -R -s -c 'split("\n")' >> payload-slack-content.json && cat payload-slack-content.json
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
