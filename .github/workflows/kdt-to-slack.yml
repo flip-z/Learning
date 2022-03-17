@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
       - name: Install KDT
-        run: curl -sSL https://cli.kondukto.io | sudo sh
+        run: curl -sSL https://cli.kondukto.io | sh
       - name: List Projects
         run: kdt list projects --host https://cedar.kondukto.io:8088 -v --token cHBBOVBtQUN2em1qM1drRmZrWHZlQ09jTmNuMnJMZVhONDJpeVZZN2VNajY5MFZRSEpXSXFjNmZ0Z2hW
