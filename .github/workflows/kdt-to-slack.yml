@@ -12,4 +12,4 @@ jobs:
       - name: Install KDT
         run: curl -sSL https://cli.kondukto.io | sh
       - name: List Projects
-        run: kdt list scans -v --host https://cedar.kondukto.io --token dTllaHY5NGFlbVo3blduV3ZMNE1wWWdlbmNvUkx0QjEyU1p2TjB0VEQ5d2FqOVFseEtTWndoUUdJOUhu -p cedar
+        run: kdt list projects -v --host https://cedar.kondukto.io --token dTllaHY5NGFlbVo3blduV3ZMNE1wWWdlbmNvUkx0QjEyU1p2TjB0VEQ5d2FqOVFseEtTWndoUUdJOUhu
