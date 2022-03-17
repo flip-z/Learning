@@ -17,7 +17,7 @@ jobs:
         run: kdt list scans -v -p cedar --host https://cedar.kondukto.io --token ${{ secrets.KDT_TOKEN }} | jq -R -s 'split("\n")' >> payload-slack-content.json
       - name: Slack POST
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"It's me, JON!"}' https://hooks.slack.com/services/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
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"It's me, JON!"}' ${{ secrets.SLACK_HOOK }}
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
