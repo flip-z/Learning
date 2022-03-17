@@ -12,11 +12,9 @@ jobs:
       - name: Install KDT
         run: curl -sSL https://cli.kondukto.io | sh
       - name: List Project Scans
-        run: kdt list scans -v -p cedar --host https://cedar.kondukto.io --token dTllaHY5NGFlbVo3blduV3ZMNE1wWWdlbmNvUkx0QjEyU1p2TjB0VEQ5d2FqOVFseEtTWndoUUdJOUhu >> payload-slack-content.json
-      - name: Send custom JSON data to Slack workflow
+        run: kdt list scans -v -p cedar --host https://cedar.kondukto.io --token ${{ secrets.KDT_TOKEN }} >> payload-slack-content.json
+      - name: Send GitHub Action trigger data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
-        with:
-          payload-file-path: "./payload-slack-content.json"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_HOOK }}
