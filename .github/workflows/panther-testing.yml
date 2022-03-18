@@ -1,7 +1,7 @@
 name: Panther Detection Linting
 
 on:
-  #push:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
         run: panther_analysis_tool test --path ./panther/panther_rules/
       - name: Install Pantherlog Tool
         env:
-          VERSION: v1.25.20
+          VERSION: v1.27.0
         run: |
           curl -sSO "https://panther-community-us-east-1.s3.amazonaws.com/$VERSION/tools/linux-amd64-pantherlog.zip" && unzip linux-amd64-pantherlog && chmod +x pantherlog
       - name: Version test
