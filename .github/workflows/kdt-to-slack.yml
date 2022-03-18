@@ -14,8 +14,11 @@ jobs:
       - name: List Project Scans
         run: |
           echo 'SCAN_DATA<<EOF' >> $GITHUB_ENV
+          echo $GITHUB_ENV
           kdt list scans -v -p cedar --host https://cedar.kondukto.io --token ${{ secrets.KDT_TOKEN }}" >> $GITHUB_ENV
+          echo $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
+          ECHO $GITHUB_ENV
       - name: Slack POST
         run: |
           curl -X POST -H 'Content-type: application/json' --data {"text":"${{ env.SCAN_DATA }}"}' ${{ secrets.SLACK_HOOK }}
