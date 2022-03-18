@@ -17,6 +17,7 @@ jobs:
           curl --location --request GET https://cedar.kondukto.io/api/v2/projects/6213ced12195e50f9f823000 \
           --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' | jq '{name, score, summary}' >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
+          echo $GITHUB_ENV
       - name: Send custom JSON data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
