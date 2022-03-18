@@ -18,7 +18,7 @@ jobs:
           echo 'done' >> $GITHUB_ENV
       - name: Slack POST
         run: |
-          curl -X POST -H 'Content-type: application/json' --data {"text":"${{ env.SCAN_DATA }}"}' ${{ secrets.SLACK_HOOK }}
+          curl -X POST -H 'Content-type: application/json' --data {"text":${{ env.SCAN_DATA }}}' ${{ secrets.SLACK_HOOK }}
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
