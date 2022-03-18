@@ -13,8 +13,8 @@ jobs:
         run: curl -sSL https://cli.kondukto.io | sh
       - name: List Project Scans
         run: |
-          echo 'SCAN_DATA<<"done"' >> $GITHUB_ENV
-          kdt list scans -v -p cedar --host https://cedar.kondukto.io --token ${{ secrets.KDT_TOKEN }}" >> $GITHUB_ENV
+          echo 'SCAN_DATA<<done' >> $GITHUB_ENV
+          kdt list scans -v -p cedar --host https://cedar.kondukto.io --token ${{ secrets.KDT_TOKEN }} >> $GITHUB_ENV
           echo 'done' >> $GITHUB_ENV
       - name: Slack POST
         run: |
