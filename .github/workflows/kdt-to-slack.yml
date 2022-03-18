@@ -11,14 +11,14 @@ jobs:
       - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
       - name: Install KDT
         run: curl -sSL https://cli.kondukto.io | sh
-      - name: Install JQ
-        run: sudo apt-get install jq
       - name: List Project Scans
         run: |
-          echo "scan_data=$(kdt list scans -v -p cedar --host https://cedar.kondukto.io --token ${{ secrets.KDT_TOKEN }} | jq -R -s 'split("\n")')" >> $GITHUB_ENV
+          echo 'SCAN_DATA<<EOF' >> $GITHUB_ENV
+          kdt list scans -v -p cedar --host https://cedar.kondukto.io --token ${{ secrets.KDT_TOKEN }}" >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
       - name: Slack POST
         run: |
-          curl -X POST -H 'Content-type: application/json' --data {"text":"${{ env.scan_data }}"}' ${{ secrets.SLACK_HOOK }}
+          curl -X POST -H 'Content-type: application/json' --data {"text":"${{ env.SCAN_DATA }}"}' ${{ secrets.SLACK_HOOK }}
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
