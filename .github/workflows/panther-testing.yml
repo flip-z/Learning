@@ -21,4 +21,4 @@ jobs:
       - name: Version test
         run: ./pantherlog --version
       - name: Single Test
-        run: ./pantherlog test panther/cedar_schemas/jamf_alerts/jamf_alerts.yml panther/cedar_schemas/jamf_alerts/jamf_alerts_tests.yml
+        run: ./pantherlog test panther/cedar_schemas/jamf_alerts/
