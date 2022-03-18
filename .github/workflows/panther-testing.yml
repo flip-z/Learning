@@ -15,7 +15,7 @@ jobs:
         run: panther_analysis_tool test --path ./panther/panther_rules/
       - name: Install Pantherlog Tool
         env:
-          VERSION: v1.17.0-RC
+          VERSION: v1.25.20
         run: curl -sSO "https://panther-community-us-east-1.s3.amazonaws.com/$VERSION/tools/dev/pantherlog-linux-amd64" && mv pantherlog-linux-amd64 pantherlog && chmod +x pantherlog
       - name: Single Test
         run: ./pantherlog test panther/cedar_schemas/jamf_alerts/jamf_alerts.yml panther/cedar_schemas/jamf_alerts/tests/jamf_alerts_tests.yml
