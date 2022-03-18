@@ -155,7 +155,7 @@ result: |
     "version": 1,
     "p_log_type": "JamfAlerts",
     "p_row_id": "b2201aa5dbe1f6e4f0b7a6d80f43",
-    "p_event_time": "2022-03-09T16:48:06.807704754Z",
+    "p_event_time": "2020-11-03T22:10:11.56Z",
     "p_parse_time": "2022-03-09T16:48:06.807704754Z",
     "p_any_ip_addresses": [
       "192.168.0.9"
