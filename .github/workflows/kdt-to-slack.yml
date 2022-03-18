@@ -14,8 +14,7 @@ jobs:
       - name: Get Project Summary
         run: |
           curl --location --request GET https://cedar.kondukto.io/api/v2/projects/6213ced12195e50f9f823000 \
-          --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}'\
-          | jq 'with_entries(select([.key] | inside(['name', 'score', 'summary'])))' >> payload-slack-content.json
+          --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' | jq '{name, score, summary}' >> payload-slack-content.json
       - name: Post to Slack
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
