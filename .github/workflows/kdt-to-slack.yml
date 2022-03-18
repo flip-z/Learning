@@ -13,12 +13,28 @@ jobs:
         run: sudo apt-get install jq
       - name: Get Project Summary
         run: |
+          echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
           curl --location --request GET https://cedar.kondukto.io/api/v2/projects/6213ced12195e50f9f823000 \
-          --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' | jq '{name, score, summary}' >> payload-slack-content.json
-      - name: Post to Slack
+          --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' | jq '{name, score, summary}' >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+      - name: Send custom JSON data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
-          payload-file-path: "./payload-slack-content.json"
+          # For posting a rich message using Block Kit
+          payload: |
+            {
+              "text": "${{ env.JSON_RESPONSE }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                  }
+                }
+              ]
+            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_HOOK }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
