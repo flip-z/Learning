@@ -14,10 +14,11 @@ jobs:
       - name: Install JQ
         run: sudo apt-get install jq
       - name: List Project Scans
-        run: kdt list scans -v -p cedar --host https://cedar.kondukto.io --token ${{ secrets.KDT_TOKEN }} | jq -R -s 'split("\n")' >> payload-slack-content.json
+        run: |
+          echo "scan_data=$(kdt list scans -v -p cedar --host https://cedar.kondukto.io --token ${{ secrets.KDT_TOKEN }} | jq -R -s 'split("\n")') >> $GITHUB_ENV
       - name: Slack POST
         run: |
-          curl -X POST -H 'Content-type: application/json' -d @payload-slack-content.json ${{ secrets.SLACK_HOOK }}
+          curl -X POST -H 'Content-type: application/json' --data {"text":"${{ env.scan_data }}"}' ${{ secrets.SLACK_HOOK }}
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
