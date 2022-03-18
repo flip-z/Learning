@@ -7,7 +7,7 @@ fields:
       fields:
         - name: identity
           required: true
-          type: objectti
+          type: object
           fields:
             - name: claims
               required: true
