@@ -44,12 +44,12 @@ jobs:
                   }
                 },
                 {
-			            "type": "section",
-			            "fields": [
-				            {
-					            "type": "mrkdwn",
-					            "text": ":sos: *Critical*: ${{ steps.vars.outputs.count-critical }}"
-				            },
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": ":sos: *Critical*: ${{ steps.vars.outputs.count-critical }}"
+                    },
                     {
                       "type": "mrkdwn",
                       "text": ":eight_pointed_black_star: *High*: ${{ steps.vars.outputs.count-high }}"
@@ -62,8 +62,8 @@ jobs:
                       "type": "mrkdwn",
                       "text": ":eight_spoked_asterisk: *Low*: ${{ steps.vars.outputs.count-low }}"
                     }
-			        ]
-		        }
+              ]
+            }
               ]
             }
         env:
