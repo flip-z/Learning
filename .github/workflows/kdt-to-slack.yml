@@ -62,10 +62,11 @@ jobs:
                       "type": "mrkdwn",
                       "text": ":eight_spoked_asterisk: *Low*: ${{ steps.vars.outputs.count-low }}"
                     }
+                  ]
+                }
               ]
             }
-              ]
-            }
+
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_HOOK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
