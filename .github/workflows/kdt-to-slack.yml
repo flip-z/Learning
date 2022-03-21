@@ -18,6 +18,7 @@ jobs:
       - name: Set Project Variables
         id: vars
         run: |
+          echo ::set-output name=all::$(cat slack-payload.json)
           echo ::set-output name=name::$(jq -r '.name' slack-payload.json)
           echo ::set-output name=count-low::$(jq '.summary.low' slack-payload.json)
           echo ::set-output name=count-medium::$(jq '.summary.medium' slack-payload.json)
@@ -40,29 +41,8 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Project:* ${{ steps.vars.outputs.name }}\n*Score:* ${{ steps.vars.outputs.score }}"
+                    "text": "${{ steps.vars.outputs.all }}"
                   }
-                },
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "mrkdwn",
-                      "text": ":sos: *Critical*: ${{ steps.vars.outputs.count-critical }}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": ":eight_pointed_black_star: *High*: ${{ steps.vars.outputs.count-high }}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": ":warning: *Medium*: ${{ steps.vars.outputs.count-medium }}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": ":eight_spoked_asterisk: *Low*: ${{ steps.vars.outputs.count-low }}"
-                    }
-                  ]
                 }
               ]
             }
