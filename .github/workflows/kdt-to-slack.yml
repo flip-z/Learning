@@ -16,14 +16,17 @@ jobs:
           curl --location --request GET https://cedar.kondukto.io/api/v2/projects/6213ced12195e50f9f823000 \
           --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' >> slack-payload.json
       - name: Set Project Name
-        id: vars
-        run: |
-          echo ::set-output name=projectname::$(jq '{name}' slack-payload.json)
-          echo ::set-output name=summary::$(jq '.summary' slack-payload.json)
-          echo ::set-output name=projectscore::$(jq '{score}' slack-payload.json)
+        id: name
+        run: echo ::set-output name=name::$(jq '{name}' slack-payload.json)
+      - name: Set Project Summary
+        id: summary
+        run: echo ::set-output name=summary::$(jq '.summary' slack-payload.json)
+      - name: Set Project Score
+        id: score
+        run: echo ::set-output name=projectscore::$(jq '{score}' slack-payload.json)
       - name: Test Variables before Send
         run: |
-          echo "Project: ${{ steps.vars.outputs.name }}\nSummary:\n${{ steps.vars.outputs.summary }}\nScore: ${{ steps.vars.outputs.summary }}"
+          echo "Project: ${{ steps.name.outputs.name }}\nSummary:\n${{ steps.summary.outputs.summary }}\nScore: ${{ steps.score.outputs.score }}"
       - name: Send custom JSON data to Slack workflow
         if: ${{ false }}
         id: slack
@@ -38,7 +41,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Project: ${{ steps.vars.outputs.projectname }}\nSummary:\n${{ steps.vars.outputs.summary }}\nScore: ${{ steps.vars.outputs.projectscore }}"
+                    "text": "Project: ${{ steps.name.outputs.name }}\nSummary:\n${{ steps.summary.outputs.summary }}\nScore: ${{ steps.score.outputs.score }}"
                   }
                 }
               ]
