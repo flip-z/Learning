@@ -32,9 +32,8 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
-          # For posting a rich message using Block Kit
+          channel-id: secops-testing
           slack-message: ${{ steps.vars.outputs.all }}
 
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_HOOK }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
