@@ -23,9 +23,8 @@ jobs:
           echo ::set-output name=projectscore::$(jq '{score}' slack-payload.json)
       - name: Test Variables before Send
         run: |
-          echo "Project: ${{ steps.name.outputs.name }}\nSummary:\n${{ steps.summary.outputs.summary }}\nScore: ${{ steps.score.outputs.score }}"
-      - name: Send custom JSON data to Slack workflow
-        if: ${{ false }}
+          echo "*Project:* ${{ steps.vars.outputs.name }}\n*Summary:*\n${{ steps.vars.outputs.summary }}\n*Score:* ${{ steps.vars.outputs.score }}"
+      - name: Send Project Report to Slack
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
