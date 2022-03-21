@@ -13,7 +13,6 @@ jobs:
         run: sudo apt-get install jq
       - name: Get Project Summary
         run: |
-          echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
           curl --location --request GET https://cedar.kondukto.io/api/v2/projects/6213ced12195e50f9f823000 \
           --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' \
           | jq --raw-output '{name, score, summary.critical, summary.high, summary.medium, summary.low}' \
