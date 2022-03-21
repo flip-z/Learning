@@ -20,7 +20,7 @@ jobs:
         run: |
           echo ::set-output name=projectname::$(cat slack-payload.json | jq '{name}')
           echo ::set-output name=summary::$(cat slack-payload.json | jq '.summary')
-          echo ::set-output name=score::$(cat slack-payload.json | jq '{score}')
+          echo ::set-output name=projectscore::$(cat slack-payload.json | jq '{score}')
       - name: Test Variables before Send
         run: |
           echo "Project: ${{ steps.vars.outputs.name }}\nSummary:\n${{ steps.vars.outputs.summary }}\nScore: ${{ steps.vars.outputs.summary }}"
@@ -38,7 +38,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Project: ${{ steps.vars.outputs.name }}\nSummary:\n${{ steps.vars.outputs.summary }}\nScore: ${{ steps.vars.outputs.score }}"
+                    "text": "Project: ${{ steps.vars.outputs.projectname }}\nSummary:\n${{ steps.vars.outputs.summary }}\nScore: ${{ steps.vars.outputs.projectscore }}"
                   }
                 }
               ]
