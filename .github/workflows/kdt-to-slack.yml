@@ -38,7 +38,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Project: ${{ steps.vars.outputs.projectname }}\nSummary:\n${{ steps.vars.outputs.summary }}\nScore: ${{ steps.vars.outputs.projectscore }}"
+                    "text": "Project: ${{ steps.vars.outputs.projectname }}\nSummary:\n${{ steps.vars.outputs.FAKE }}\nScore: ${{ steps.vars.outputs.projectscore }}"
                   }
                 }
               ]
