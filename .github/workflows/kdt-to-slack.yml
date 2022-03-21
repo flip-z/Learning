@@ -23,10 +23,10 @@ jobs:
           echo ::set-output name=count-medium::$(jq '.summary.medium' slack-payload.json)
           echo ::set-output name=count-high::$(jq '.summary.high' slack-payload.json)
           echo ::set-output name=count-critical::$(jq '.summary.critical' slack-payload.json)
-          echo ::set-output name=projectscore::$(jq '.score' slack-payload.json)
+          echo ::set-output name=score::$(jq '.score' slack-payload.json)
       - name: Test Variables before Send
         run: |
-          echo "*Project:* ${{ steps.vars.outputs.name }}\n*Summary:*\n${{ steps.vars.outputs.summary }}\n*Score:* ${{ steps.vars.outputs.score }}"
+          printf "${{ steps.vars.outputs.name }}\n${{ steps.vars.outputs.score }}\n${{ steps.vars.outputs.count-critical }}\n${{ steps.vars.outputs.count-high }}\n${{ steps.vars.outputs.count-medium }}\n${{ steps.vars.outputs.count-low }}\n"
       - name: Send Project Report to Slack
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
