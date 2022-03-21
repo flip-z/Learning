@@ -18,7 +18,7 @@ jobs:
       - name: Set Project Variables
         id: vars
         run: |
-          echo ::set-output name=name::$(jq '.name' slack-payload.json)
+          echo ::set-output name=name::$(jq -r '.name' slack-payload.json)
           echo ::set-output name=count-low::$(jq '.summary.low' slack-payload.json)
           echo ::set-output name=count-medium::$(jq '.summary.medium' slack-payload.json)
           echo ::set-output name=count-high::$(jq '.summary.high' slack-payload.json)
