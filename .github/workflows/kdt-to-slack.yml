@@ -36,4 +36,4 @@ jobs:
           slack-message: ${{ steps.vars.outputs.all }}
 
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_HOOK }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
