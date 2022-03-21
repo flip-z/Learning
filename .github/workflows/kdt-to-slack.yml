@@ -18,9 +18,9 @@ jobs:
       - name: Set Variables
         id: vars
         run: |
-          echo ::set-output name=projectname::$(cat slack-payload.json | jq '{name}')
-          echo ::set-output name=summary::$(cat slack-payload.json | jq '.summary')
-          echo ::set-output name=projectscore::$(cat slack-payload.json | jq '{score}')
+          echo ::set-output name=projectname::$(jq '{name}' slack-payload.json)
+          echo ::set-output name=FAKE::$(jq '.summary' slack-payload.json)
+          echo ::set-output name=projectscore::$(jq '{score}' slack-payload.json)
       - name: Test Variables before Send
         run: |
           echo "Project: ${{ steps.vars.outputs.name }}\nSummary:\n${{ steps.vars.outputs.summary }}\nScore: ${{ steps.vars.outputs.summary }}"
