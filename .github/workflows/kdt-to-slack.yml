@@ -15,11 +15,12 @@ jobs:
         run: |
           curl --location --request GET https://cedar.kondukto.io/api/v2/projects/6213ced12195e50f9f823000 \
           --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' >> slack-payload.json
-      - name: Set Payload Variable
-        id: var
-        run: echo ::set-output name=slack::$(cat slack-payload.json)
-      - name: Test Variable
-        run: echo ${{ steps.var.outputs.slack }}
+      - name: Set Variables
+        id: vars
+        run: |
+          echo ::set-output name=projectname::$(cat slack-payload.json | jq --raw-content '.name')
+          echo ::set-output name=summary::$(cat slack-payload.json | jq --raw-content '.summary')
+          echo ::set-output name=score::$(cat slack-payload.json | jq --raw-content '.score')
       - name: Send custom JSON data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
@@ -27,13 +28,13 @@ jobs:
           # For posting a rich message using Block Kit
           payload: |
             {
-              "text": ${{ steps.var.outputs.slack }},
+              "text": "Kondukto to Slack Output",
               "blocks": [
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ${{ steps.var.outputs.slack }}"
+                    "text": "Project: ${{ steps.vars.outputs.name }}\nSummary:\n${{ steps.vars.outputs.summary }}\nScore: {{ steps.vars.outputs.summary }}"
                   }
                 }
               ]
