@@ -22,7 +22,22 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        value: ${{ fromJson(needs.project_matrix.outputs.matrix) }}
+        ids: ${{ fromJson(needs.project_matrix.outputs.matrix) }}
     steps:
-      - run: |
-          echo "${{ matrix.ids }}"
+      - name: Get Project Summary
+        run: |
+          curl --location --request GET https://cedar.kondukto.io/api/v2/projects/${{ matrix.ids }} \
+          --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' >> slack-payload.json
+      - name: Set Project Variables
+        id: vars
+        run: |
+          echo ::set-output name=all::$(jq '{name, id, score, summary}' slack-payload.json)
+      - name: Send Project Report to Slack
+        id: slack
+        uses: slackapi/slack-github-action@v1.18.0
+        with:
+          channel-id: secops-testing
+          slack-message: ${{ steps.vars.outputs.all }}
+
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
