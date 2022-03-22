@@ -5,26 +5,22 @@ on:
   workflow_dispatch:
 
 jobs:
-  KDT:
+  project_matrix:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.ids }}
     steps:
-      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
       - name: Install jq
         run: sudo apt-get install jq
-      - name: Get Project Summary
+      - id: matrix
         run: |
-          curl --location --request GET https://cedar.kondukto.io/api/v2/projects/6213ced12195e50f9f823000 \
-          --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' >> slack-payload.json
-      - name: Set Project Variables
-        id: vars
-        run: |
-          echo ::set-output name=all::$(jq '{name, id, score, summary}' slack-payload.json)
-      - name: Send Project Report to Slack
-        id: slack
-        uses: slackapi/slack-github-action@v1.18.0
-        with:
-          channel-id: secops-testing
-          slack-message: ${{ steps.vars.outputs.all }}
-
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          echo '::set-output name=ids::$(curl --location --request GET https://cedar.kondukto.io/api/v2/projects --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' | jq '[.projects|.[].id]')'
+  report_to_slack:
+    needs: [ project_matrix ]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        value: ${{ fromJson(needs.project_matrix.outputs.matrix) }}
+    steps:
+      - run: |
+          echo "${{ matrix.ids }}"
