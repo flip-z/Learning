@@ -1,7 +1,8 @@
 name: Kondukto Report to Slack
 
 on:
-  push:
+  schedule:
+    - cron: "30 10 * * 1"
   workflow_dispatch:
 
 jobs:
@@ -10,8 +11,7 @@ jobs:
     outputs:
       matrix: ${{ steps.matrix.outputs.ids }}
     steps:
-      - name: Install jq
-        run: sudo apt-get install jq
+      - run: sudo apt-get install jq
       - run: |
           curl --location --request GET https://cedar.kondukto.io/api/v2/projects --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' >> projects.json
       - id: matrix
@@ -24,15 +24,13 @@ jobs:
       matrix:
         ids: ${{ fromJson(needs.project_matrix.outputs.matrix) }}
     steps:
-      - name: Get Project Summary
-        run: |
+      - run: |
           curl --location --request GET https://cedar.kondukto.io/api/v2/projects/${{ matrix.ids }} \
           --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' >> slack-payload.json
-      - name: Set Project Variables
-        id: vars
+      - id: vars
         run: |
           echo ::set-output name=all::$(jq '{name, id, score, summary}' slack-payload.json)
-      - name: Send Project Report to Slack
+      - name: Slack Report
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
