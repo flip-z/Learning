@@ -12,9 +12,11 @@ jobs:
     steps:
       - name: Install jq
         run: sudo apt-get install jq
+      - run: |
+          curl --location --request GET https://cedar.kondukto.io/api/v2/projects --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' >> projects.json
       - id: matrix
         run: |
-          echo '::set-output name=ids::$(curl --location --request GET https://cedar.kondukto.io/api/v2/projects --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' | jq '[.projects|.[].id]')'
+          echo '::set-output name=ids::$(jq '[.projects|.[].id]' projects.json)'
   report_to_slack:
     needs: [ project_matrix ]
     runs-on: ubuntu-latest
