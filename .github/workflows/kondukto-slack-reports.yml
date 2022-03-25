@@ -20,9 +20,9 @@ jobs:
   data_format:
     needs: [ project_matrix ]
     runs-on: ubuntu-latest
-      strategy:
-        matrix:
-          ids: ${{ fromJson(needs.project_matrix.outputs.matrix) }}
+    strategy:
+      matrix:
+        ids: ${{ fromJson(needs.project_matrix.outputs.matrix) }}
     steps:
       - run: mkdir kondukto
       - run: echo "NAME\tSCORE\tLOW, MEDIUM\tHIGH\tCRITICAL\tLAST_SCAN" > kondukto/headers.tsv
@@ -35,6 +35,7 @@ jobs:
           name: Kondukto
           path: kondukto/
   slack_report:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v3
         with:
