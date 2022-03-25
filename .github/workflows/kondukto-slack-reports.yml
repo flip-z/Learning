@@ -1,0 +1,54 @@
+name: Kondukto Report to Slack
+
+on:
+  schedule:
+    - cron: "30 10 * * 1"
+  workflow_dispatch:
+
+jobs:
+  project_matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.ids }}
+    steps:
+      - run: sudo apt-get install jq
+      - run: |
+          curl --location --request GET https://cedar.kondukto.io/api/v2/projects --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' >> projects.json
+      - id: matrix
+        run: |
+          echo ::set-output name=ids::$(jq '[.projects|.[].id]' projects.json)
+  data_format:
+    needs: [ project_matrix ]
+    runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          ids: ${{ fromJson(needs.project_matrix.outputs.matrix) }}
+    steps:
+      - run: mkdir kondukto
+      - run: echo "NAME\tSCORE\tLOW, MEDIUM\tHIGH\tCRITICAL\tLAST_SCAN" > kondukto/headers.tsv
+      - run: |
+          curl --location --request GET https://cedar.kondukto.io/api/v2/projects/${{ matrix.ids }} \
+          --header 'X-Cookie: ${{ secrets.KDT_TOKEN }} \
+          | jq -r '[({name, score} * (.summary | {low, medium, high, critical}) * (.last | {scan_date}))[]] | @tsv' >> kondukto/data.tsv
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Kondukto
+          path: kondukto/
+  slack_report:
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: Kondukto
+      - run: ls -R
+      - name: Create Slack Message
+        id: message
+        run: echo ::set-output name=message::$(cat data.tsv >> headers.tsv)
+      - name: Slack Report
+        id: slack
+        uses: slackapi/slack-github-action@v1.18.0
+        with:
+          channel-id: secops-testing
+          slack-message: ${{ steps.message.outputs.message }}
+
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
