@@ -41,10 +41,11 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: Kondukto
-      - run: ls -R
       - name: Create Slack Message
+        run: cat data.tsv >> headers.tsv
+      - name: Assign Message Var
         id: message
-        run: echo ::set-output name=message::$(cat data.tsv >> headers.tsv)
+        run: echo ::set-output name=message::$(cat headers.tsv)
       - name: Slack Report
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
