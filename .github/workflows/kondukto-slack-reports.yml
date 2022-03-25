@@ -53,7 +53,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.18.0
         with:
           channel-id: secops-testing
-          slack-message: ${{ steps.message.outputs.message }}
+          slack-message: '${{ steps.message.outputs.message }}'
 
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
