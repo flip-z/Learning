@@ -41,8 +41,8 @@ jobs:
           name: Kondukto
       - name: Create Slack Message
         run: |
-          echo "NAME\tSCORE\tLOW\tMEDIUM\tHIGH\tCRITICAL\tLAST_SCAN" > headers.tsv
           find ./ -name "*.tsv" -exec cat {} + | tee data.tsv
+          printf "NAME\tSCORE\tLOW\tMEDIUM\tHIGH\tCRITICAL\tLAST_SCAN\n" > headers.tsv
           cat headers.tsv > message.tsv
           cat data.tsv >> message.tsv
       - name: Assign Message Var
