@@ -27,8 +27,9 @@ jobs:
       - run: mkdir kondukto
       - run: echo "NAME\tSCORE\tLOW, MEDIUM\tHIGH\tCRITICAL\tLAST_SCAN" > kondukto/headers.tsv
       - run: |
-          curl --location --request GET https://cedar.kondukto.io/api/v2/projects/${{ matrix.ids }} --header 'X-Cookie: ${{ secrets.KDT_TOKEN }} \
-          | jq -r '[({name, score} * (.summary | {low, medium, high, critical}) * (.last | {scan_date}))[]] | @tsv' >> kondukto/data.tsv
+          curl --location --request GET https://cedar.kondukto.io/api/v2/projects/${{ matrix.ids }} --header 'X-Cookie: ${{ secrets.KDT_TOKEN }} >> kondukto/data.tsv
+      - run: cat kondukto/data.tsv
+      - run: jq -r '[({name, score} * (.summary | {low, medium, high, critical}) * (.last | {scan_date}))[]] | @tsv' < kondukto/data.tsv
       - uses: actions/upload-artifact@v3
         with:
           name: Kondukto
