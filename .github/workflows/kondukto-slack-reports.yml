@@ -52,7 +52,6 @@ jobs:
           message="${message//'%'/'%25'}"
           message="${message//$'\n'/'%0A'}"
           message="${message//$'\r'/'%0D'}"
-          message="${message//$'\t'/'%09'}"
           echo "::set-output name=slack-message::$message"
       - run: echo '${{ steps.slack-message.outputs.slack-message }}'
       - name: Slack Report
