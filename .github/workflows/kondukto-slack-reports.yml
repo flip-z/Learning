@@ -42,8 +42,9 @@ jobs:
       - name: Create Slack Message
         run: |
           find ./ -name "*.tsv" -exec cat {} + | tee data.tsv
-          echo "NAME\tSCORE\tLOW\tMEDIUM\tHIGH\tCRITICAL\tLAST_SCAN\n" > message.tsv
+          printf "NAME\tSCORE\tLOW\tMEDIUM\tHIGH\tCRITICAL\tLAST_SCAN\n" > message.tsv
           cat data.tsv >> message.tsv
+          printf "\n" >> message.tsv
       - name: Assign Message Var
         id: message
         run: echo ::set-output name=message::$(cat message.tsv)
