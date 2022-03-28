@@ -52,7 +52,6 @@ jobs:
           echo 'EOF' >> $GITHUB_ENV
       - run: echo "$MESSAGE_ENV"
       - name: Slack Report
-        if: ${{ false }}
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
