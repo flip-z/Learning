@@ -47,7 +47,7 @@ jobs:
           printf "\n" >> message.tsv
       - name: Assign Message Var
         id: message
-        run: echo ::set-output name=message::$(cat message.tsv)
+        run: echo ::set-output name=message::$(echo "New\nLine")
       - run: echo ${{ steps.message.outputs.message }}
       - name: Slack Report
         if: ${{ false }}
