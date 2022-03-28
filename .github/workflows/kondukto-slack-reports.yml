@@ -54,7 +54,7 @@ jobs:
           message="${message//$'\r'/'%0D'}"
           message="${message//$'\t'/'%09'}"
           echo "::set-output name=slack-message::$message"
-      - run: echo ${{ steps.slack-message.outputs.slack-message }}
+      - run: echo '${{ steps.slack-message.outputs.slack-message }}'
       - name: Slack Report
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
