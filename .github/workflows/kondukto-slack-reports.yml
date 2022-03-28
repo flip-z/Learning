@@ -48,7 +48,9 @@ jobs:
       - name: Assign Message Var
         id: message
         run: echo ::set-output name=message::$(cat message.tsv)
+      - run: echo ${{ steps.message.outputs.message }}
       - name: Slack Report
+        if: ${{ false }}
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
