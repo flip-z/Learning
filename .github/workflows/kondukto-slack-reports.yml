@@ -48,7 +48,7 @@ jobs:
       - name: Assign Message Var
         id: slack-message
         run: |
-          message = $(cat message.tsv)
+          message=$(cat message.tsv)
           message="${message//'%'/'%25'}"
           message="${message//$'\n'/'%0A'}"
           message="${message//$'\r'/'%0D'}"
