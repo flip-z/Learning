@@ -50,13 +50,13 @@ jobs:
           echo 'MESSAGE_ENV<<EOF' >> $GITHUB_ENV
           cat message.tsv >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
-      - run: echo "$MESSAGE_ENV"
+      - run: echo $MESSAGE_ENV
       - name: Slack Report
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
           channel-id: secops-testing
-          slack-message: "$MESSAGE_ENV"
+          slack-message: $MESSAGE_ENV
 
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
