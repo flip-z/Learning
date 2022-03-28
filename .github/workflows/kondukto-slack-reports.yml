@@ -44,18 +44,20 @@ jobs:
           find ./ -name "*.tsv" -exec cat {} + | tee data.tsv
           printf "NAME\tSCORE\tLOW\tMEDIUM\tHIGH\tCRITICAL\tLAST_SCAN\n" > message.tsv
           cat data.tsv >> message.tsv
-          printf "\n" >> message.tsv
       - name: Assign Message Var
         id: message
-        run: echo ::set-output name=message::$(echo "New\nLine")
-      - run: echo ${{ steps.message.outputs.message }}
+        run: |
+          echo 'MESSAGE_ENV<<EOF' >> $GITHUB_ENV
+          cat message.tsv >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+      - run: echo "$MESSAGE_ENV"
       - name: Slack Report
         if: ${{ false }}
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
           channel-id: secops-testing
-          slack-message: '${{ steps.message.outputs.message }}'
+          slack-message: "$MESSAGE_ENV"
 
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
