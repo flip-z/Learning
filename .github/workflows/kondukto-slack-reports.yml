@@ -27,7 +27,7 @@ jobs:
       - run: mkdir kondukto
       - run: |
           curl --location --request GET https://cedar.kondukto.io/api/v2/projects/${{ matrix.ids }} --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' \
-          | jq -r '[({name, score} * (.summary | {low, medium, high, critical}) * (.last | {scan_date}))[]] | @tsv' > kondukto/${{ matrix.ids }}.tsv
+          | jq -r '[({name, score} * (.summary | {low, medium, high, critical}))[]] | @tsv' > kondukto/${{ matrix.ids }}.tsv
       - uses: actions/upload-artifact@v3
         with:
           name: Kondukto
@@ -42,7 +42,7 @@ jobs:
       - name: Create Slack Message
         run: |
           find ./ -name "*.tsv" -exec cat {} + | tee data.tsv
-          printf "NAME\tSCORE\tLOW\tMEDIUM\tHIGH\tCRITICAL\tLAST_SCAN\n" > message.tsv
+          printf "NAME\tSCORE\tLOW\tMEDIUM\tHIGH\tCRITICAL\n" > message.tsv
           cat data.tsv >> message.tsv
 
       - name: Assign Message Var
