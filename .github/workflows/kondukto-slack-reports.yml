@@ -14,6 +14,7 @@ jobs:
       - run: sudo apt-get install jq
       - run: |
           curl --location --request GET https://cedar.kondukto.io/api/v2/projects --header 'X-Cookie: ${{ secrets.KDT_TOKEN }}' >> projects.json
+      - run: ls -lh projects.json
       - id: matrix
         run: |
           echo ::set-output name=ids::$(jq '[.projects|.[].id]' projects.json)
